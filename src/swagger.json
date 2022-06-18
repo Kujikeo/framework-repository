@@ -1,0 +1,108 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "DYN -  Documentation",
+        "declaration": "This is an apis to calculate the cans.",
+        "version": "1.0",
+        "contact": {
+            "email": "guilhermelima_1996@hotmail.com"
+        }
+    },
+    "paths": {
+        "/calculate": {
+            "post": {
+                "tags": [
+                    "walls"
+                ],
+                "summary": "Calculate quantity of cans",
+                "description": "Calcule quantity of cans for your wall",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/walls"
+                                },
+                                "example": {
+                                    "walls": [
+                                        {
+                                            "door": 0,
+                                            "window": 0,
+                                            "height": 4,
+                                            "width": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "totalLitros": 2,
+                        "totalLatas": "4 lata de 0.5 "
+                    },
+                    "500": {
+                        "description": "Category Already exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Wall"
+                ],
+                "summary": "List all walls",
+                "description": "List all walls",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "totalLitros": {
+                                                "type": "number"
+                                            },
+                                            "totalLatas": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "walls": {
+                "type": "array",
+                "properties": {
+                    "door": {
+                        "type": "number"
+                    },
+                    "window": {
+                        "type": "number",
+                        "format": "int64"
+                    },
+                    "height": {
+                        "type": "number"
+                    },
+                    "width": {
+                        "type": "number"
+                    }
+                },
+                "xml": {
+                    "name": "walls"
+                }
+            }
+        }
+    }
+}
