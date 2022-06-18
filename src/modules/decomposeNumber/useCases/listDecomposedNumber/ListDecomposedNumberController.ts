@@ -8,9 +8,7 @@ class ListDecomposedNumberController {
 
 
     handle(request: Request, response: Response): Response {
-
         return response.status(200).json(this.listDecomposedNumberUseCase.execute()); 
-
     }
 }
 export { ListDecomposedNumberController }

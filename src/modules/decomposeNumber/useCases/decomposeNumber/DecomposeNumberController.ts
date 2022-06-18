@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DecomposeNumberUseCase } from "./DecomposeNumber";
+import { DecomposeNumberUseCase } from "./DecomposeNumberUseCase";
 
 class DecomposeNumberController {
 
@@ -13,7 +13,6 @@ class DecomposeNumberController {
             return response.status(201).json(this.decomposeNumberUseCase.execute({ number }));
 
         } catch (error) {
- 
             return response.status(500).json({ error: error.message });
         }
 
