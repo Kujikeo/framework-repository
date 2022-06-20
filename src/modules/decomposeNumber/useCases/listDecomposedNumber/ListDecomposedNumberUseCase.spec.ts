@@ -1,54 +1,53 @@
-import {DecomposeNumber} from "../../model/DecomposeNumber";
-import { WallRepository } from "../../decomposeNumber/repositories/implementations/WallsRepository";
-import { CalculateWallUseCase } from "../decomposeNumber/DecomposeNumberUseCase";
-import { ListWallsCalculatedUseCase } from "./ListDecomposedNumberUseCase";
+import { DecomposeNumber } from "../../model/DecomposeNumber";
+import { DecomposeNumberRepository } from "../../repositories/implementations/DecomposeNumberRepository";
+import { DecomposeNumberUseCase } from "../decomposeNumber/DecomposeNumberUseCase";
+import { ListDecomposedNumberUseCase } from "./ListDecomposedNumberUseCase";
 
-let listWallUseCase: ListWallsCalculatedUseCase;
-let listWallRepository: WallRepository;
-let calculateWallUseCase: CalculateWallUseCase;
+let listDecomposedNumberUseCase: ListDecomposedNumberUseCase;
+let listDecomposedNumberRepository: DecomposeNumberRepository;
+let decomposedNumberUseCase: DecomposeNumberUseCase;
 describe(
-    "List walls", () => {
+    "List decomposed numbers", () => {
         beforeEach(() => {
-            listWallRepository = WallRepository.getInstance()
-            calculateWallUseCase = new CalculateWallUseCase(listWallRepository);
-            listWallUseCase = new ListWallsCalculatedUseCase(listWallRepository);
+            listDecomposedNumberRepository = DecomposeNumberRepository.getInstance()
+            decomposedNumberUseCase = new DecomposeNumberUseCase(listDecomposedNumberRepository);
+            listDecomposedNumberUseCase = new ListDecomposedNumberUseCase(listDecomposedNumberRepository);
         })
 
         it("should be able to list walls calculated", async () => {
-           
-             const oneObject = listWallRepository.calculate({
-                walls: [
-                    {
-                        "door": 1,
-                        "window": 2,
-                        "height": 8,
-                        "width": 5
-                    }
-                ]
-            })
-            const twoObject = listWallRepository.calculate({
-                walls: [
-                    {
-                        "door": 0,
-                        "window": 0,
-                        "height": 18,
-                        "width": 5
-                    }
-                ]
-            })
-            
 
-           const walls =  listWallUseCase.execute()
+            const oneObject = listDecomposedNumberRepository.decomposeNumber({
+                number: 45
+            })
+            const twoObject = listDecomposedNumberRepository.decomposeNumber({
+                number: 25
+            })
 
-           expect(walls).toEqual(
-            expect.arrayContaining([
-              expect.objectContaining({
-                totalLatas: "1 lata de 3.6 1 lata de 2.5 1 lata de 0.5  1 lata de 0.5 Vai sobrar: 0.1 de Tinta",
-                totalLitros: 7,
-              }),
-              twoObject
-            ])
-          );
+
+            const decomposeNumbers = listDecomposedNumberUseCase.execute()
+
+            expect(decomposeNumbers).toEqual(
+                expect.arrayContaining([
+                    expect.objectContaining({
+                        "divisibleNumbers": [
+                            1,
+                            3,
+                            5,
+                            9,
+                            15,
+                            45
+                        ],
+                        "primeNumbers": [
+                            1,
+                            3,
+                            5
+                        ],
+                        "createdAt": "2022-06-19T14:57:18.100Z"
+                    },
+                    ),
+                    twoObject
+                ])
+            );
         })
     }
 

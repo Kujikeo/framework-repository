@@ -1,78 +1,50 @@
 import { DecomposeNumberRepository } from "../../repositories/implementations/DecomposeNumberRepository";
-import {  DecomposeNumberUseCase} from "./DecomposeNumberUseCase";
+import { DecomposeNumberUseCase } from "./DecomposeNumberUseCase";
 
 let decomposeNumberUseCase: DecomposeNumberUseCase;
 let decomposeNumberRepository: DecomposeNumberRepository;
 describe(
-    "Calculate cans", () => {
+    "Decompose Number", () => {
         beforeEach(() => {
             decomposeNumberRepository = DecomposeNumberRepository.getInstance()
             decomposeNumberUseCase = new DecomposeNumberUseCase(decomposeNumberRepository);
         })
-        it("should be able to calculate", () => {
+        it("should be able to decompose number", () => {
 
-
-            expect(calculateWallUseCase.execute({
-                walls: [
-                    {
-                        "door": 1,
-                        "window": 1,
-                        "height": 2.30,
-                        "width": 10
-                    }
-                ]
+            expect(decomposeNumberUseCase.execute({
+                number: 45
             })).toStrictEqual({
-                "totalLitros": 4,
-                "totalLatas": "1 lata de 3.6  1 lata de 0.5 Vai sobrar: 0.1 de Tinta"
+                "divisibleNumbers": [
+                    1,
+                    3,
+                    5,
+                    9,
+                    15,
+                    45
+                ],
+                "primeNumbers": [
+                    1,
+                    3,
+                    5
+                ]
             })
         })
-        it("should not be able to calculate when the wall and door dont have more 30cm space entry", () => {
+        it("should not be able to decompose when the number is 0", () => {
 
             expect(() => {
-                calculateWallUseCase.execute({
-                    walls: [
-                        {
-                            "door": 1,
-                            "window": 0,
-                            "height": 1,
-                            "width": 5
-                        }
-                    ]
+                decomposeNumberUseCase.execute({
+                    number: 0
                 })
             }).toThrowError()
         })
 
-        it("should not be able to calculate when the wall is bigger than 50m", () => {
+        it("should not be able to decompose when the number is null", () => {
 
             expect(() => {
-                calculateWallUseCase.execute({
-                    walls: [
-                        {
-                            "door": 0,
-                            "window": 0,
-                            "height": 51,
-                            "width": 5
-                        }
-                    ]
-                })
-            }).toThrowError()
-        })
-
-        it("should not be able to calculate when the wall is than less 1m", () => {
-
-            expect(() => {
-                calculateWallUseCase.execute({
-                    walls: [
-                        {
-                            "door": 0,
-                            "window": 0,
-                            "height": 0.90,
-                            "width": 5
-                        }
-                    ]
+                decomposeNumberUseCase.execute({
+                    number: null
                 })
             }).toThrowError()
         })
     }
-
 );
