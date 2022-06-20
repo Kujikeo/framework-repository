@@ -15,4 +15,16 @@ You can test in your browser or using the program like postman or insomnia.
 in project have a fie to postman collection.
 
 [API ROUTES]
-building...
+Arquivo do postman pra API estão no repositório.
+```bash
+POST / decompose
+
+body{
+    "number": 45
+}
+```
+
+List números já feitos.
+]
+```bash
+```
