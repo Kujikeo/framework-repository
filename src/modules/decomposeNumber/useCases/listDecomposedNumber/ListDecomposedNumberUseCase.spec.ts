@@ -26,6 +26,7 @@ describe(
 
             const decomposeNumbers = listDecomposedNumberUseCase.execute()
 
+            
             expect(decomposeNumbers).toEqual(
                 expect.arrayContaining([
                     expect.objectContaining({
@@ -42,10 +43,9 @@ describe(
                             3,
                             5
                         ],
-                        "createdAt": "2022-06-19T14:57:18.100Z"
                     },
                     ),
-                    twoObject
+                    oneObject
                 ])
             );
         })

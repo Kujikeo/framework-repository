@@ -4,7 +4,6 @@ import { IDecomposeNumberRepository, IDecomposeNumberDTO } from "../IDecomposeNu
 interface IReturnResultDecomposeNumber {
     divisibleNumbers: number[];
     primeNumbers: number[];
-    createdAt?: Date;
 }
 
 class DecomposeNumberRepository implements IDecomposeNumberRepository {
@@ -28,8 +27,7 @@ class DecomposeNumberRepository implements IDecomposeNumberRepository {
 
         this.decomposeNumbersList.push({
             divisibleNumbers: numberDivisible.divisibleNumbers,
-            primeNumbers: numberDivisible.primeNumbers,
-            createdAt: new Date()
+            primeNumbers: numberDivisible.primeNumbers
         })
         return numberDivisible
     }

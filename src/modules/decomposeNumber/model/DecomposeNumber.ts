@@ -5,7 +5,6 @@ class DecomposeNumber {
     id?: string;
     divisibleNumbers: number[];
     primeNumbers: number[];
-    createdAt: Date;
     constructor() {
         if (!this.id) {
             this.id = uuidV4();
