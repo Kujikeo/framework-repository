@@ -15,7 +15,7 @@ You can test in your browser or using the program like postman or insomnia.
 in project have a fie to postman collection.
 
 [API ROUTES]
-Arquivo do postman pra API estão no repositório.
+have a file postman with requests.
 ```bash
 POST / decompose
 
@@ -24,7 +24,6 @@ body{
 }
 ```
 
-List números já feitos.
-]
+List numbers 
 ```bash
 ```
