@@ -9,30 +9,20 @@
         }
     },
     "paths": {
-        "/calculate": {
+        "/decompose": {
             "post": {
                 "tags": [
-                    "walls"
+                    "Decomposed"
                 ],
-                "summary": "Calculate quantity of cans",
-                "description": "Calcule quantity of cans for your wall",
+                "summary": "Decompose Number",
+                "description": "you can set a number to decompose and show primes too.",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/walls"
-                                },
-                                "example": {
-                                    "walls": [
-                                        {
-                                            "door": 0,
-                                            "window": 0,
-                                            "height": 4,
-                                            "width": 2
-                                        }
-                                    ]
+                                "type": "object",
+                                "properties": {
+                                    "number": "number"
                                 }
                             }
                         }
@@ -40,20 +30,20 @@
                 },
                 "responses": {
                     "201": {
-                        "totalLitros": 2,
-                        "totalLatas": "4 lata de 0.5 "
+                        "divisibleNumbers": "number",
+                        "primeNumbers": "number"
                     },
                     "500": {
-                        "description": "Category Already exists"
+                        "description": "Zero or Null number"
                     }
                 }
             },
             "get": {
                 "tags": [
-                    "Wall"
+                    "Decomposed"
                 ],
-                "summary": "List all walls",
-                "description": "List all walls",
+                "summary": "List all decomposed number",
+                "description": "List all decomposed number",
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -64,11 +54,11 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "totalLitros": {
-                                                "type": "number"
+                                            "divisibleNumbers": {
+                                                "type": "array"
                                             },
-                                            "totalLatas": {
-                                                "type": "string"
+                                            "primeNumbers": {
+                                                "type": "array"
                                             }
                                         }
                                     }
@@ -76,31 +66,6 @@
                             }
                         }
                     }
-                }
-            }
-        }
-    },
-    "components": {
-        "schemas": {
-            "walls": {
-                "type": "array",
-                "properties": {
-                    "door": {
-                        "type": "number"
-                    },
-                    "window": {
-                        "type": "number",
-                        "format": "int64"
-                    },
-                    "height": {
-                        "type": "number"
-                    },
-                    "width": {
-                        "type": "number"
-                    }
-                },
-                "xml": {
-                    "name": "walls"
                 }
             }
         }
