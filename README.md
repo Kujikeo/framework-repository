@@ -30,5 +30,12 @@ GET / decompose
 ```
 
 
+[TEST]
+
+```bash
+yarn test
+```
+
+
 [SWAGGER]
 [http://localhost:3333/api-docs]
