@@ -26,4 +26,9 @@ body{
 
 List numbers 
 ```bash
+GET / decompose
 ```
+
+
+[SWAGGER]
+[http://localhost:3333/api-docs]
