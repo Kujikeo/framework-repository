@@ -22,7 +22,12 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "number": "number"
+                                    "number": {
+                                        "type": "number"
+                                    }
+                                },
+                                "example": {
+                                    "number": 45
                                 }
                             }
                         }
